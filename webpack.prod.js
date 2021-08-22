@@ -1,5 +1,6 @@
 const path = require("path");
 const common = require("./webpack.common");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -15,5 +16,8 @@ module.exports = merge(common, {
   optimization: {
     minimizer: [new CssMinimizerWebpackPlugin(), new TerserPlugin()],
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({ filename: "css/[name].[contenthash].css" }),
+  ],
 });

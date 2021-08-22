@@ -6,8 +6,15 @@ module.exports = merge(common, {
   output: {
     path: path.resolve(__dirname, "/dist"),
     filename: "[name].bundle.js",
+    chunkFilename: "[name].bundle.js"
   },
   devServer: {
     port: 3005,
+    // static: "./dist"
   },
+  optimization: {
+    runtimeChunk: "single",
+  },
+  devtool: "inline-source-map",
+  target: "web",
 });

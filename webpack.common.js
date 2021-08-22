@@ -9,7 +9,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|scss|css)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -33,9 +33,11 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "css/[name].[contenthash].css" }),
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/template.html",
     }),
   ],
+  target: "web",
+  devtool: "source-map",
 };
